@@ -69,6 +69,11 @@ sudo service node-exporter start
 sudo service node-exporter status
 
 
+How to moniot this endpoint in promethious :
+
+
+vi /usr/local/bin/prometheus/prometheus.yml 
+
 
 
 
