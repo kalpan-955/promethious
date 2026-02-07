@@ -37,6 +37,41 @@ sudo service prometheus status
 
 
 
+NODE EXPORTER INSTALLATION:
+
+wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
+
+tar xzf node_exporter-0.18.1.linux-amd64.tar.gz
+
+cp node_exporter-0.18.1.linux-amd64/node_exporter /usr/local/bin/node_exporter
+
+sudo vi /etc/systemd/system/node-exporter.service
+
+
+
+[Unit]
+Description=Prometheus Node Exporter Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+systemctl daemon-reload
+sudo service node-exporter start
+sudo service node-exporter status
+
+
+
+
+
 
 
 
