@@ -10,3 +10,33 @@ tar -xvzf prometheus-2.18.1.linux-amd64.tar.gz
  in b/w use ls 
 
  master:ip :9090
+
+
+******Start Prometheus as a Service:****
+
+
+cp -r . /usr/local/bin/prometheus
+
+vi /etc/systemd/system/prometheus.service
+
+[Unit]
+Description=Prometheus Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/prometheus/prometheus --config.file=/usr/local/bin/prometheus/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target
+
+sudo service prometheus start
+sudo service prometheus status
+
+
+
+
+
+
+
+
